@@ -1,0 +1,1 @@
+JMH S 43 com.performance.collections.ListPerformance S 69 com.performance.collections.generated.ListPerformance_testAdd_jmhTest S 7 testAdd S 11 AverageTime E A 1 1 1 E I 1 5 E E E E E I 1 1 I 1 1 E E E E E U 12 MICROSECONDS E E 
