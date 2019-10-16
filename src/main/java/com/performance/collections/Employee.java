@@ -1,7 +1,6 @@
 package com.performance.collections;
 
-public class Employee {
-
+public class Employee implements Comparable<Employee>{
   private Long id;
   private String name;
   
@@ -26,33 +25,27 @@ public class Employee {
   
   @Override
   public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + ((id == null) ? 0 : id.hashCode());
-    result = prime * result + ((name == null) ? 0 : name.hashCode());
+    int result = id.hashCode();
+    result = 31 * result + name.hashCode();
     return result;
   }
   
   @Override
-  public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (getClass() != obj.getClass())
-      return false;
-    Employee other = (Employee) obj;
-    if (id == null) {
-      if (other.id != null)
-        return false;
-    } else if (!id.equals(other.id))
-      return false;
-    if (name == null) {
-      if (other.name != null)
-        return false;
-    } else if (!name.equals(other.name))
-      return false;
-    return true;
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    
+    Employee employee = (Employee) o;
+    
+    if (!id.equals(employee.id)) return false;
+    return name.equals(employee.name);
+  }
+
+  public int compareTo(Employee o) {
+    if(id.equals(o.id)) 
+      return 0;
+    else 
+      return 1;
   }
   
   

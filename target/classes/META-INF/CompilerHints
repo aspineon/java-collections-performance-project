@@ -5,3 +5,11 @@ dontinline,*.*_ss_jmhStub
 dontinline,*.*_thrpt_jmhStub
 inline,com/performance/collections/ListPerformance$InternalState.setUp
 inline,com/performance/collections/ListPerformance.testAdd
+inline,com/performance/collections/ListPerformance.testAddAt
+inline,com/performance/collections/ListPerformance.testContains
+inline,com/performance/collections/ListPerformance.testGet
+inline,com/performance/collections/ListPerformance.testIndexOf
+inline,com/performance/collections/ListPerformance.testRemove
+inline,com/performance/collections/ListPerformance.testSize
+inline,com/performance/collections/SetPerformance$InternalState.setUp
+inline,com/performance/collections/SetPerformance.testSize
