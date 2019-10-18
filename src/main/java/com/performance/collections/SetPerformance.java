@@ -1,6 +1,8 @@
 package com.performance.collections;
 
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +12,7 @@ import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
@@ -29,7 +32,9 @@ public class SetPerformance {
     TreeSet<Employee> employeeSet = new TreeSet<Employee>();
 
     Employee employee = new Employee(100L, "Harry");
-    long iterations = 1000000;
+
+    @Param({ "100", "10000", "1000000" })
+    long iterations;
 
     @Setup(Level.Trial)
     public void setUp() {
@@ -41,32 +46,49 @@ public class SetPerformance {
     }
   }
 
-  /*
-   * @Benchmark public boolean testAdd(SetPerformance.InternalState state) {
-   * System.out.println(); return state.employeeSet.add(new
-   * Employee(state.iterations + 1, "Harry")); }
-   * 
-   * @Benchmark public boolean testContains(SetPerformance.InternalState state) {
-   * System.out.println(); return state.employeeSet.contains(state.employee); }
-   * 
-   * @Benchmark public int testSize(SetPerformance.InternalState state) {
-   * System.out.println(); return state.employeeSet.size(); }
-   * 
-   * @Benchmark public Iterator<Employee>
-   * testIterator(SetPerformance.InternalState state) { System.out.println();
-   * return state.employeeSet.iterator(); }
-   * 
-   * @Benchmark public boolean testRemove(SetPerformance.InternalState state) {
-   * System.out.println(); return state.employeeSet.remove(state.employee); }
-   */
+  @Benchmark
+  public boolean testAdd(SetPerformance.InternalState state) {
+    System.out.println();
+    return state.employeeSet.add(new Employee(state.iterations + 1, "Harry during add"));
+  }
+
+  @Benchmark
+  public boolean testContains(SetPerformance.InternalState state) {
+    System.out.println();
+    return state.employeeSet.contains(state.employee);
+  }
+
+  @Benchmark
+  public int testSize(SetPerformance.InternalState state) {
+    System.out.println();
+    return state.employeeSet.size();
+  }
+
+  @Benchmark
+  public boolean testRemove(SetPerformance.InternalState state) {
+    System.out.println();
+    return state.employeeSet.remove(state.employee);
+  }
+
   @Benchmark
   public void testSearchWithForEach(SetPerformance.InternalState state) {
-    for(Employee e : state.employeeSet) {
-      if(e.equals(state.employee)) {
-        System.out.println("found at for each:"+ e.getId());
+    for (Employee e : state.employeeSet) {
+      if (e.getId().equals(state.employee.getId())) {
+        System.out.println("found at for each:" + e.getName());
       }
     }
   }
-  
-  
+
+  @Benchmark
+  public void testSearchWithJava8Streams(SetPerformance.InternalState state) {
+    state.employeeSet.stream().filter(L -> L.getId().equals(state.employee.getId()))
+        .forEach(F -> System.out.println("found in java 8 streams:" + F.getName()));
+  }
+
+  @Benchmark
+  public void testSearchWithJava8ParallelStreams(SetPerformance.InternalState state) {
+    state.employeeSet.parallelStream().filter(L -> L.getId().equals(state.employee.getId()))
+        .forEach(F -> System.out.println("found in java 8 parallel streams:" + F.getName()));
+  }
+
 }

@@ -2,6 +2,7 @@ package com.performance.collections;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
@@ -30,16 +31,17 @@ public class MapPerformance {
 //    LinkedHashMap<Long, Employee> employeeMap = new LinkedHashMap<Long, Employee>();
     TreeMap<Long, Employee> employeeMap = new TreeMap<Long, Employee>();
 
-    Employee employee = new Employee(1000001L, "Harry");
-
-    @Param({"100", "10000", "1000000"})
+    @Param({ "100", "10000", "1000000" })
     long iterations;
+
+    Employee employee = new Employee(100L, "Harry");
 
     @Setup(Level.Trial)
     public void setUp() {
       for (long i = 0; i < iterations; i++) {
         employeeMap.put(i, new Employee(i, "John"));
       }
+      System.out.println("iter:" + iterations);
       employeeMap.put(iterations, employee);
     }
 
@@ -52,9 +54,8 @@ public class MapPerformance {
   }
 
   @Benchmark
-  public Employee testGet(MapPerformance.InternalState state) {
-    System.out.println();
-    return state.employeeMap.get(state.employee.getId());
+  public void testGet(MapPerformance.InternalState state) {
+    System.out.println(state.employeeMap.get(state.employee.getId()).getName());
   }
 
   @Benchmark
@@ -73,6 +74,24 @@ public class MapPerformance {
   public int testSize(MapPerformance.InternalState state) {
     System.out.println();
     return state.employeeMap.size();
+  }
+
+  @Benchmark
+  public void testSearchWithForEach(MapPerformance.InternalState state) {
+    for (Employee e : state.employeeMap.values()) {
+      if (e.getId().equals(state.employee.getId())) {
+        System.out.println("Found key and value is:" + e.getName());
+      }
+    }
+  }
+
+  @Benchmark
+  public void testSearchWithJava8ForEach(MapPerformance.InternalState state) {
+    state.employeeMap.forEach((k, v) -> {
+      if (v.getId().equals(state.employee.getId())) {
+        System.out.println("Found key and it's value is:" + v.getName());
+      }
+    });
   }
 
 }

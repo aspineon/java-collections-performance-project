@@ -8,6 +8,11 @@
 	<name>java-collections-performance-project</name>
 	<description>This project is to determine performance of java collections under different load conditions.</description>
 
+	<properties>
+	    <maven.compiler.target>1.8</maven.compiler.target>
+	    <maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.openjdk.jmh</groupId>
