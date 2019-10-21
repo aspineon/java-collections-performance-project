@@ -91,4 +91,13 @@ public class SetPerformance {
         .forEach(F -> System.out.println("found in java 8 parallel streams:" + F.getName()));
   }
 
+  @Benchmark
+  public void testSearchWithJava8ForEach(SetPerformance.InternalState state) {
+    state.employeeSet.forEach(S -> {
+      if (S.getId().equals(state.employee.getId())) {
+        System.out.println("found in java 8 for each:" + S.getName());
+      }
+    });
+  }
+
 }

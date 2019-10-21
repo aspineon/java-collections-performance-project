@@ -8,30 +8,36 @@ import java.util.TreeSet;
 
 public class Test {
 
-  HashSet<Employee> employeeSet = new HashSet<Employee>();
+  HashMap<Long, Employee> employeeMap = new HashMap<Long, Employee>();
+  ArrayList<Employee> employeeList = new ArrayList<Employee>();
+  
   
   Employee employee = new Employee(100L, "Harry");
   long iterations = 100000;
   
   public static void main(String[] args) {
     Test t = new Test();
-    t.crazyLoop();
-    t.searchEmployee();
+//    t.addElementsToMap();
+    t.addElementsToList();
   }
 
-  private void crazyLoop() {
-    for(long i = 0; i < iterations; i++) {
-      employeeSet.add(new Employee(i, "John"));
-    }
-    employeeSet.add(employee);
-    System.out.println("total size:"+employeeSet.size());
+  private void addElementsToMap() {
+    employeeMap.put(1L, new Employee(1L, "Harry"));
+    employeeMap.put(2L, new Employee(2L, "Harry"));
+    employeeMap.put(3L, new Employee(3L, "Harry"));
+    employeeMap.put(4L, new Employee(4L, "Harry"));
+    System.out.println(employeeMap.size());
+    System.out.println(employeeMap.get(2L).getId());
   }
-  
-  
-  private void searchEmployee() {
-    employeeSet.parallelStream().filter(L -> L.getId().equals(employee.getId()))
-    .forEach(F -> System.out.println("found in java 8 streams:" + F.getName()));
+
+  private void addElementsToList() {
+    employeeList.add(new Employee(1L, "Harry"));
+    employeeList.add(new Employee(2L, "Harry"));
+    employeeList.add(new Employee(3L, "Harry"));
+    employeeList.add(new Employee(4L, "Harry"));
+    System.out.println(employeeList.size());
+    System.out.println(employeeList.get(employeeList.indexOf(new Employee(2L, "Harry"))).getId() );
   }
-  
+
   
 }

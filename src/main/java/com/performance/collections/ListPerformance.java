@@ -44,48 +44,30 @@ public class ListPerformance {
     }
   }
 
-  @Benchmark
-  public void testAdd(ListPerformance.InternalState state) {
-    System.out.println();
-    state.employeeList.add(new Employee(state.iterations + 1, "Harry with addition"));
-  }
-
-  @Benchmark
-  public void testAddAt(ListPerformance.InternalState state) {
-    System.out.println();
-    state.employeeList.add((int) state.iterations, new Employee(state.iterations, "John add at"));
-  }
-
-  @Benchmark
-  public int testSize(ListPerformance.InternalState state) {
-    System.out.println();
-    return state.employeeList.size();
-  }
-
-  @Benchmark
-  public Employee testGet(ListPerformance.InternalState state) {
-    System.out.println();
-    return state.employeeList.get(state.employeeIndex);
-  }
-
-  @Benchmark
-  public int testIndexOf(ListPerformance.InternalState state) {
-    System.out.println();
-    return state.employeeList.indexOf(state.employee);
-  }
-
-  @Benchmark
-  public boolean testContains(ListPerformance.InternalState state) {
-    System.out.println();
-    return state.employeeList.contains(state.employee);
-  }
-
-  @Benchmark
-  public boolean testRemove(ListPerformance.InternalState state) {
-    System.out.println();
-    return state.employeeList.remove(state.employee);
-  }
-
+  /*
+   * @Benchmark public void testAdd(ListPerformance.InternalState state) {
+   * System.out.println(); state.employeeList.add(new Employee(state.iterations +
+   * 1, "Harry with addition")); }
+   * 
+   * @Benchmark public void testAddAt(ListPerformance.InternalState state) {
+   * System.out.println(); state.employeeList.add((int) state.iterations, new
+   * Employee(state.iterations, "John add at")); }
+   * 
+   * @Benchmark public int testSize(ListPerformance.InternalState state) {
+   * System.out.println(); return state.employeeList.size(); }
+   * 
+   * @Benchmark public Employee testGet(ListPerformance.InternalState state) {
+   * System.out.println(); return state.employeeList.get(state.employeeIndex); }
+   * 
+   * @Benchmark public int testIndexOf(ListPerformance.InternalState state) {
+   * System.out.println(); return state.employeeList.indexOf(state.employee); }
+   * 
+   * @Benchmark public boolean testContains(ListPerformance.InternalState state) {
+   * System.out.println(); return state.employeeList.contains(state.employee); }
+   * 
+   * @Benchmark public boolean testRemove(ListPerformance.InternalState state) {
+   * System.out.println(); return state.employeeList.remove(state.employee); }
+   */
   @Benchmark
   public void testSearchWithForEach(ListPerformance.InternalState state) {
     for (Employee e : state.employeeList) {

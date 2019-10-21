@@ -1,6 +1,7 @@
 com/performance/collections/generated/MapPerformance_testContainsKey_jmhTest.class
 com/performance/collections/generated/ListPerformance_InternalState_jmhType_B3.class
 com/performance/collections/MapPerformance.class
+com/performance/collections/generated/ListPerformance_testSearchWithJava8ParallelStreams_jmhTest.class
 com/performance/collections/generated/MapPerformance_testSize_jmhTest.class
 com/performance/collections/generated/MapPerformance_InternalState_jmhType_B2.class
 META-INF/BenchmarkList
@@ -12,8 +13,10 @@ com/performance/collections/generated/MapPerformance_testGet_jmhTest.class
 com/performance/collections/generated/SetPerformance_InternalState_jmhType_B1.class
 com/performance/collections/generated/ListPerformance_jmhType_B2.class
 com/performance/collections/generated/ListPerformance_jmhType.class
+com/performance/collections/generated/SetPerformance_testSearchWithJava8ForEach_jmhTest.class
 com/performance/collections/generated/SetPerformance_jmhType_B1.class
 com/performance/collections/generated/MapPerformance_testSearchWithJava8ForEach_jmhTest.class
+com/performance/collections/generated/ListPerformance_testSearchWithForEach_jmhTest.class
 com/performance/collections/SetPerformance$InternalState.class
 com/performance/collections/generated/SetPerformance_InternalState_jmhType.class
 com/performance/collections/generated/MapPerformance_jmhType.class
@@ -32,8 +35,8 @@ com/performance/collections/generated/ListPerformance_InternalState_jmhType_B1.c
 com/performance/collections/generated/MapPerformance_InternalState_jmhType_B3.class
 com/performance/collections/generated/MapPerformance_testRemove_jmhTest.class
 com/performance/collections/generated/ListPerformance_jmhType_B1.class
-com/performance/collections/generated/ListPerformance_testAdd_jmhTest.class
 com/performance/collections/generated/SetPerformance_jmhType_B2.class
+com/performance/collections/generated/ListPerformance_testSearchWithJava8Streams_jmhTest.class
 com/performance/collections/generated/MapPerformance_InternalState_jmhType.class
 com/performance/collections/MapPerformance$InternalState.class
 com/performance/collections/generated/ListPerformance_InternalState_jmhType_B2.class
@@ -47,4 +50,5 @@ com/performance/collections/generated/ListPerformance_InternalState_jmhType.clas
 com/performance/collections/generated/MapPerformance_jmhType_B3.class
 com/performance/collections/generated/SetPerformance_testAdd_jmhTest.class
 com/performance/collections/generated/SetPerformance_jmhType_B3.class
+com/performance/collections/generated/ListPerformance_testSearchWithJava8ForEach_jmhTest.class
 com/performance/collections/generated/SetPerformance_jmhType.class
