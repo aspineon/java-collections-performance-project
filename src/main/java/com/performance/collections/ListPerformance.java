@@ -67,25 +67,18 @@ public class ListPerformance {
    * 
    * @Benchmark public boolean testRemove(ListPerformance.InternalState state) {
    * System.out.println(); return state.employeeList.remove(state.employee); }
+   * 
+   * @Benchmark public void testSearchWithForEach(ListPerformance.InternalState
+   * state) { for (Employee e : state.employeeList) { if
+   * (e.getId().equals(state.employee.getId())) {
+   * System.out.println("found in for each:" + e.getName()); } } }
+   * 
+   * @Benchmark public void
+   * testSearchWithJava8ForEach(ListPerformance.InternalState state) {
+   * state.employeeList.forEach(L -> { if
+   * (L.getId().equals(state.employee.getId())) {
+   * System.out.println("found in java 8 for each:" + L.getName()); } }); }
    */
-  @Benchmark
-  public void testSearchWithForEach(ListPerformance.InternalState state) {
-    for (Employee e : state.employeeList) {
-      if (e.getId().equals(state.employee.getId())) {
-        System.out.println("found in for each:" + e.getName());
-      }
-    }
-  }
-
-  @Benchmark
-  public void testSearchWithJava8ForEach(ListPerformance.InternalState state) {
-    state.employeeList.forEach(L -> {
-      if (L.getId().equals(state.employee.getId())) {
-        System.out.println("found in java 8 for each:" + L.getName());
-      }
-    });
-  }
-
   @Benchmark
   public void testSearchWithJava8Streams(ListPerformance.InternalState state) {
     state.employeeList.stream().filter(L -> L.getId().equals(state.employee.getId()))

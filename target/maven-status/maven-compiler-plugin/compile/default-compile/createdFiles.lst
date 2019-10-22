@@ -16,7 +16,6 @@ com/performance/collections/generated/ListPerformance_jmhType.class
 com/performance/collections/generated/SetPerformance_testSearchWithJava8ForEach_jmhTest.class
 com/performance/collections/generated/SetPerformance_jmhType_B1.class
 com/performance/collections/generated/MapPerformance_testSearchWithJava8ForEach_jmhTest.class
-com/performance/collections/generated/ListPerformance_testSearchWithForEach_jmhTest.class
 com/performance/collections/SetPerformance$InternalState.class
 com/performance/collections/generated/SetPerformance_InternalState_jmhType.class
 com/performance/collections/generated/MapPerformance_jmhType.class
@@ -50,5 +49,4 @@ com/performance/collections/generated/ListPerformance_InternalState_jmhType.clas
 com/performance/collections/generated/MapPerformance_jmhType_B3.class
 com/performance/collections/generated/SetPerformance_testAdd_jmhTest.class
 com/performance/collections/generated/SetPerformance_jmhType_B3.class
-com/performance/collections/generated/ListPerformance_testSearchWithJava8ForEach_jmhTest.class
 com/performance/collections/generated/SetPerformance_jmhType.class
